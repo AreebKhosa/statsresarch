@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(210, 11%, 21%);
+  --muted: hsl(210, 40%, 96%);
+  --muted-foreground: hsl(215, 16%, 47%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(210, 11%, 21%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(210, 11%, 21%);
+  --border: hsl(214, 32%, 91%);
+  --input: hsl(214, 32%, 91%);
+  --primary: hsl(210, 50%, 23%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(207, 90%, 54%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --accent: hsl(4, 76%, 58%);
+  --accent-foreground: hsl(0, 0%, 100%);
+  --success: hsl(149, 57%, 42%);
+  --success-foreground: hsl(0, 0%, 100%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(60, 9%, 98%);
+  --ring: hsl(210, 11%, 21%);
+  --radius: 0.5rem;
+  
+  /* Portfolio specific colors */
+  --portfolio-primary: hsl(210, 50%, 23%);
+  --portfolio-secondary: hsl(207, 90%, 54%);
+  --portfolio-accent: hsl(4, 76%, 58%);
+  --portfolio-success: hsl(149, 57%, 42%);
+  --portfolio-text: hsl(210, 11%, 21%);
+  --portfolio-muted: hsl(215, 16%, 47%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 4%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 4%, 16%);
+  --muted-foreground: hsl(240, 5%, 65%);
+  --popover: hsl(240, 10%, 4%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 4%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 4%, 16%);
+  --input: hsl(240, 4%, 16%);
+  --primary: hsl(210, 50%, 23%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(207, 90%, 54%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --accent: hsl(4, 76%, 58%);
+  --accent-foreground: hsl(0, 0%, 100%);
+  --success: hsl(149, 57%, 42%);
+  --success-foreground: hsl(0, 0%, 100%);
+  --destructive: hsl(0, 63%, 31%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 5%, 84%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+/* Portfolio specific styles */
+.gradient-bg {
+  background: linear-gradient(135deg, var(--portfolio-primary) 0%, var(--portfolio-text) 100%);
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* Portfolio color utilities */
+.bg-portfolio-primary {
+  background-color: var(--portfolio-primary);
+}
+
+.bg-portfolio-secondary {
+  background-color: var(--portfolio-secondary);
+}
+
+.bg-portfolio-accent {
+  background-color: var(--portfolio-accent);
+}
+
+.bg-portfolio-success {
+  background-color: var(--portfolio-success);
+}
+
+.text-portfolio-primary {
+  color: var(--portfolio-primary);
+}
+
+.text-portfolio-secondary {
+  color: var(--portfolio-secondary);
+}
+
+.text-portfolio-accent {
+  color: var(--portfolio-accent);
+}
+
+.text-portfolio-success {
+  color: var(--portfolio-success);
+}
+
+.text-portfolio-text {
+  color: var(--portfolio-text);
+}
+
+.text-portfolio-muted {
+  color: var(--portfolio-muted);
+}
+
+/* Hover states */
+.hover\:bg-portfolio-secondary:hover {
+  background-color: var(--portfolio-secondary);
+}
+
+.hover\:text-portfolio-secondary:hover {
+  color: var(--portfolio-secondary);
+}
+
+.hover\:text-portfolio-primary:hover {
+  color: var(--portfolio-primary);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;500;600;700&display=swap');

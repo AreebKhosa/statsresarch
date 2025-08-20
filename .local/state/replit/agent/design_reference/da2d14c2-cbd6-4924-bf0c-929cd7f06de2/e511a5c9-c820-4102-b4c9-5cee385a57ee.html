@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Sarah Chen - Statistical Research Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#2C3E50',
+                        'secondary': '#3498DB',
+                        'accent': '#E74C3C',
+                        'success': '#27AE60',
+                        'text': '#34495E'
+                    },
+                    fontFamily: {
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                        'source': ['Source Sans Pro', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #2C3E50 0%, #34495E 100%);
+        }
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-source text-text bg-white smooth-scroll">
+    
+    <!-- Navigation -->
+    <!-- @COMPONENT: Navigation [responsive navbar with smooth scroll links] -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-100 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold font-montserrat text-primary">Dr. Sarah Chen</h1>
+                    <span class="ml-3 text-sm text-gray-500 hidden sm:block">Statistical Researcher</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-text hover:text-secondary transition-colors duration-200 font-medium">Home</a>
+                    <a href="#expertise" class="text-text hover:text-secondary transition-colors duration-200 font-medium">Expertise</a>
+                    <a href="#projects" class="text-text hover:text-secondary transition-colors duration-200 font-medium">Research</a>
+                    <a href="#visualizations" class="text-text hover:text-secondary transition-colors duration-200 font-medium">Visualizations</a>
+                    <a href="#contact" class="text-text hover:text-secondary transition-colors duration-200 font-medium">Contact</a>
+                </div>
+                <button class="md:hidden text-primary hover:text-secondary transition-colors duration-200">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: Navigation -->
+
+    <!-- Hero Section -->
+    <!-- @COMPONENT: HeroSection [researcher introduction with professional background] -->
+    <section id="home" class="gradient-bg text-white py-20 sm:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold font-montserrat mb-6 leading-tight">
+                        Transforming Data into 
+                        <span class="text-secondary">Insights</span>
+                    </h1>
+                    <p class="text-xl sm:text-2xl mb-8 text-gray-300 leading-relaxed">
+                        Statistical researcher with 10+ years of experience in advanced analytics, 
+                        machine learning, and data-driven decision making.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-secondary hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105">
+                            View Research Portfolio
+                        </button>
+                        <button class="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 rounded-lg font-semibold transition-all duration-200">
+                            Download CV
+                        </button>
+                    </div>
+                </div>
+                <div class="fade-in lg:pl-8">
+                    <!-- A professional researcher working with statistical data and charts in a modern office environment -->
+                    <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Professional researcher at work" 
+                         class="rounded-2xl shadow-2xl w-full h-auto max-w-lg mx-auto" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: HeroSection -->
+
+    <!-- Expertise Overview -->
+    <!-- @COMPONENT: ExpertiseSection [statistical specializations and skills] -->
+    <section id="expertise" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold font-montserrat text-primary mb-4">Research Expertise</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Specialized in advanced statistical methods and computational analytics across multiple domains
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- @MAP: expertiseAreas.map(area => ( -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 fade-in">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-2xl text-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold font-montserrat text-primary mb-4">Predictive Modeling</h3>
+                    <p class="text-gray-600 mb-4">Advanced regression analysis, time series forecasting, and machine learning algorithms for predictive analytics.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm">Python</span>
+                        <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm">R</span>
+                        <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm">TensorFlow</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 fade-in">
+                    <div class="w-16 h-16 bg-success/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-database text-2xl text-success"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold font-montserrat text-primary mb-4">Biostatistics</h3>
+                    <p class="text-gray-600 mb-4">Clinical trial design, survival analysis, and epidemiological studies with focus on healthcare outcomes.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-success/10 text-success px-3 py-1 rounded-full text-sm">SAS</span>
+                        <span class="bg-success/10 text-success px-3 py-1 rounded-full text-sm">SPSS</span>
+                        <span class="bg-success/10 text-success px-3 py-1 rounded-full text-sm">Stata</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 fade-in">
+                    <div class="w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-brain text-2xl text-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold font-montserrat text-primary mb-4">Machine Learning</h3>
+                    <p class="text-gray-600 mb-4">Deep learning, neural networks, and AI-driven statistical analysis for complex pattern recognition.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm">PyTorch</span>
+                        <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm">Scikit-learn</span>
+                        <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm">Keras</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 fade-in">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-pie text-2xl text-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold font-montserrat text-primary mb-4">Data Visualization</h3>
+                    <p class="text-gray-600 mb-4">Interactive dashboards, statistical graphics, and data storytelling for executive presentations.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm">Tableau</span>
+                        <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm">D3.js</span>
+                        <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm">Power BI</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 fade-in">
+                    <div class="w-16 h-16 bg-success/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-calculator text-2xl text-success"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold font-montserrat text-primary mb-4">Experimental Design</h3>
+                    <p class="text-gray-600 mb-4">A/B testing, factorial designs, and statistical power analysis for robust experimental frameworks.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-success/10 text-success px-3 py-1 rounded-full text-sm">DOE</span>
+                        <span class="bg-success/10 text-success px-3 py-1 rounded-full text-sm">ANOVA</span>
+                        <span class="bg-success/10 text-success px-3 py-1 rounded-full text-sm">Minitab</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 fade-in">
+                    <div class="w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-code-branch text-2xl text-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold font-montserrat text-primary mb-4">Bayesian Analysis</h3>
+                    <p class="text-gray-600 mb-4">Bayesian inference, MCMC methods, and probabilistic modeling for uncertainty quantification.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm">Stan</span>
+                        <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm">PyMC3</span>
+                        <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm">JAGS</span>
+                    </div>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ExpertiseSection -->
+
+    <!-- Research Projects Gallery -->
+    <!-- @COMPONENT: ProjectsGallery [detailed case studies and research findings] -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold font-montserrat text-primary mb-4">Featured Research Projects</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Explore my latest statistical research and analytical case studies that have driven significant insights and innovations
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- @MAP: featuredProjects.map(project => ( -->
+                <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 fade-in">
+                    <!-- A complex data visualization dashboard showing multiple statistical charts and graphs -->
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" 
+                         alt="Healthcare Outcomes Predictive Model" 
+                         class="w-full h-64 object-cover" />
+                    <div class="p-8">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">Healthcare Analytics</span>
+                            <span class="bg-success/10 text-success px-3 py-1 rounded-full text-sm font-medium">Published</span>
+                        </div>
+                        <h3 class="text-2xl font-bold font-montserrat text-primary mb-4">Healthcare Outcomes Predictive Model</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Developed a machine learning model to predict patient readmission rates using electronic health records. 
+                            Achieved 89% accuracy with significant cost savings for healthcare systems.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4 text-sm text-gray-500">
+                                <span><i class="fas fa-calendar-alt mr-1"></i> 2023</span>
+                                <span><i class="fas fa-users mr-1"></i> 15,000 patients</span>
+                                <span><i class="fas fa-chart-line mr-1"></i> 89% accuracy</span>
+                            </div>
+                            <button class="text-secondary hover:text-primary font-semibold transition-colors duration-200">
+                                View Details <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 fade-in">
+                    <!-- Financial market data analysis with multiple trend lines and statistical indicators -->
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" 
+                         alt="Financial Risk Assessment Study" 
+                         class="w-full h-64 object-cover" />
+                    <div class="p-8">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">Financial Analytics</span>
+                            <span class="bg-success/10 text-success px-3 py-1 rounded-full text-sm font-medium">Award Winner</span>
+                        </div>
+                        <h3 class="text-2xl font-bold font-montserrat text-primary mb-4">Financial Risk Assessment Study</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Comprehensive Bayesian analysis of market volatility patterns during economic uncertainty periods. 
+                            Won the 2023 Statistical Excellence Award for innovative methodology.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4 text-sm text-gray-500">
+                                <span><i class="fas fa-calendar-alt mr-1"></i> 2023</span>
+                                <span><i class="fas fa-database mr-1"></i> 500GB data</span>
+                                <span><i class="fas fa-award mr-1"></i> Award winner</span>
+                            </div>
+                            <button class="text-secondary hover:text-primary font-semibold transition-colors duration-200">
+                                View Details <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 fade-in">
+                    <!-- Environmental data collection and analysis in a research laboratory setting -->
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" 
+                         alt="Climate Change Impact Analysis" 
+                         class="w-full h-64 object-cover" />
+                    <div class="p-8">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-success/10 text-success px-3 py-1 rounded-full text-sm font-medium">Environmental Science</span>
+                            <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">Ongoing</span>
+                        </div>
+                        <h3 class="text-2xl font-bold font-montserrat text-primary mb-4">Climate Change Impact Analysis</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Multi-decade time series analysis of climate patterns using advanced statistical modeling. 
+                            Collaboration with NASA and NOAA for global environmental monitoring.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4 text-sm text-gray-500">
+                                <span><i class="fas fa-calendar-alt mr-1"></i> 2023</span>
+                                <span><i class="fas fa-globe mr-1"></i> Global dataset</span>
+                                <span><i class="fas fa-clock mr-1"></i> 50+ years</span>
+                            </div>
+                            <button class="text-secondary hover:text-primary font-semibold transition-colors duration-200">
+                                View Details <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 fade-in">
+                    <!-- Social media analytics dashboard showing user engagement statistics and behavioral patterns -->
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" 
+                         alt="Social Media Analytics Research" 
+                         class="w-full h-64 object-cover" />
+                    <div class="p-8">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">Social Analytics</span>
+                            <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">Peer Reviewed</span>
+                        </div>
+                        <h3 class="text-2xl font-bold font-montserrat text-primary mb-4">Social Media Analytics Research</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Statistical analysis of user behavior patterns across social platforms using network analysis 
+                            and sentiment modeling. Published in top-tier journal with high impact factor.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4 text-sm text-gray-500">
+                                <span><i class="fas fa-calendar-alt mr-1"></i> 2022</span>
+                                <span><i class="fas fa-users mr-1"></i> 1M+ users</span>
+                                <span><i class="fas fa-eye mr-1"></i> 5K citations</span>
+                            </div>
+                            <button class="text-secondary hover:text-primary font-semibold transition-colors duration-200">
+                                View Details <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+
+            <div class="text-center mt-12 fade-in">
+                <button class="bg-primary hover:bg-gray-800 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105">
+                    View All Research Projects
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ProjectsGallery -->
+
+    <!-- Interactive Data Visualizations -->
+    <!-- @COMPONENT: VisualizationsSection [interactive charts demonstrating analytical capabilities] -->
+    <section id="visualizations" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold font-montserrat text-primary mb-4">Interactive Data Visualizations</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Explore interactive charts and visualizations that demonstrate my analytical capabilities and data storytelling expertise
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 mb-16">
+                <div class="bg-white p-8 rounded-2xl shadow-lg fade-in">
+                    <h3 class="text-2xl font-bold font-montserrat text-primary mb-6">Patient Outcome Trends</h3>
+                    <div class="chart-container mb-4">
+                        <canvas id="outcomeChart"></canvas>
+                    </div>
+                    <p class="text-gray-600">Statistical analysis showing improvement in patient outcomes over 24-month study period with 95% confidence intervals.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg fade-in">
+                    <h3 class="text-2xl font-bold font-montserrat text-primary mb-6">Risk Distribution Analysis</h3>
+                    <div class="chart-container mb-4">
+                        <canvas id="riskChart"></canvas>
+                    </div>
+                    <p class="text-gray-600">Probability distribution of financial risk factors using Bayesian inference and Monte Carlo simulation methods.</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl shadow-lg fade-in">
+                <h3 class="text-2xl font-bold font-montserrat text-primary mb-6 text-center">Climate Data Correlation Matrix</h3>
+                <div class="chart-container mb-4" style="height: 400px;">
+                    <canvas id="correlationChart"></canvas>
+                </div>
+                <p class="text-gray-600 text-center">Correlation analysis of multiple climate variables across global monitoring stations using hierarchical clustering.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mt-16">
+                <div class="text-center p-6 bg-white rounded-xl shadow-lg fade-in">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-chart-bar text-2xl text-secondary"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold font-montserrat text-primary mb-2">50+ Visualizations</h4>
+                    <p class="text-gray-600">Interactive charts and dashboards created for research publications and presentations</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded-xl shadow-lg fade-in">
+                    <div class="w-16 h-16 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-database text-2xl text-success"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold font-montserrat text-primary mb-2">1TB+ Data Analyzed</h4>
+                    <p class="text-gray-600">Large-scale datasets processed and visualized across multiple research domains</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded-xl shadow-lg fade-in">
+                    <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-2xl text-accent"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold font-montserrat text-primary mb-2">25+ Collaborations</h4>
+                    <p class="text-gray-600">Cross-disciplinary partnerships with researchers, institutions, and industry leaders</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: VisualizationsSection -->
+
+    <!-- Publications & Recognition -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold font-montserrat text-primary mb-4">Recognition & Impact</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Published research, awards, and professional recognition in the statistical and data science community
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <div class="text-center p-6 fade-in">
+                    <div class="text-4xl font-bold text-secondary mb-2">45+</div>
+                    <div class="text-lg font-semibold text-primary mb-1">Publications</div>
+                    <div class="text-gray-600">Peer-reviewed articles in top journals</div>
+                </div>
+                <div class="text-center p-6 fade-in">
+                    <div class="text-4xl font-bold text-success mb-2">2,500+</div>
+                    <div class="text-lg font-semibold text-primary mb-1">Citations</div>
+                    <div class="text-gray-600">Research impact across disciplines</div>
+                </div>
+                <div class="text-center p-6 fade-in">
+                    <div class="text-4xl font-bold text-accent mb-2">8</div>
+                    <div class="text-lg font-semibold text-primary mb-1">Awards</div>
+                    <div class="text-gray-600">Professional excellence recognition</div>
+                </div>
+                <div class="text-center p-6 fade-in">
+                    <div class="text-4xl font-bold text-secondary mb-2">15</div>
+                    <div class="text-lg font-semibold text-primary mb-1">Keynote Talks</div>
+                    <div class="text-gray-600">International conference presentations</div>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-primary to-secondary rounded-2xl p-8 text-white text-center fade-in">
+                <h3 class="text-2xl font-bold font-montserrat mb-4">Latest Recognition</h3>
+                <p class="text-xl mb-6">2023 Statistical Excellence Award for Innovation in Healthcare Analytics</p>
+                <div class="flex justify-center items-center gap-8">
+                    <!-- Professional conference award ceremony with statisticians and data scientists -->
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=150" 
+                         alt="Awards ceremony" 
+                         class="rounded-lg shadow-lg w-32 h-24 object-cover" />
+                    <div class="text-left">
+                        <p class="font-semibold">American Statistical Association</p>
+                        <p class="opacity-90">Excellence in Applied Statistics</p>
+                        <p class="opacity-75">San Francisco, CA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <!-- @COMPONENT: ContactSection [professional contact and collaboration opportunities] -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold font-montserrat text-primary mb-4">Let's Collaborate</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Interested in statistical consulting, research collaboration, or speaking opportunities? Let's discuss how we can work together.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="fade-in">
+                    <div class="space-y-8">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-secondary text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-primary mb-2">Email</h3>
+                                <p class="text-gray-600" data-bind="researcher.email">sarah.chen@university.edu</p>
+                                <p class="text-gray-600" data-bind="researcher.altEmail">s.chen.stats@research.org</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-success/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-phone text-success text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-primary mb-2">Phone</h3>
+                                <p class="text-gray-600" data-bind="researcher.phone">+1 (555) 123-4567</p>
+                                <p class="text-sm text-gray-500">Available for consultation calls</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-accent text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-primary mb-2">Location</h3>
+                                <p class="text-gray-600" data-bind="researcher.location">Stanford University, CA</p>
+                                <p class="text-sm text-gray-500">Available for remote collaboration worldwide</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fab fa-linkedin text-secondary text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-primary mb-2">Professional Networks</h3>
+                                <div class="space-y-2">
+                                    <a href="#" class="text-secondary hover:text-primary block transition-colors duration-200">LinkedIn: /in/sarah-chen-stats</a>
+                                    <a href="#" class="text-secondary hover:text-primary block transition-colors duration-200">ResearchGate: Sarah_Chen_Statistics</a>
+                                    <a href="#" class="text-secondary hover:text-primary block transition-colors duration-200">ORCID: 0000-0000-0000-0000</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 p-6 bg-white rounded-xl shadow-lg">
+                        <h3 class="text-xl font-semibold font-montserrat text-primary mb-4">Collaboration Opportunities</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check-circle text-success"></i>
+                                <span class="text-gray-600">Statistical consulting for research projects</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check-circle text-success"></i>
+                                <span class="text-gray-600">Keynote speaking at conferences</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check-circle text-success"></i>
+                                <span class="text-gray-600">Joint research publications</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check-circle text-success"></i>
+                                <span class="text-gray-600">Data science training workshops</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg fade-in">
+                    <h3 class="text-2xl font-bold font-montserrat text-primary mb-6">Send a Message</h3>
+                    <!-- @FUNCTIONALITY: Contact form should implement validation and email sending -->
+                    <form class="space-y-6" data-implementation="Should validate form and send email via backend API">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-primary mb-2">Name *</label>
+                                <input type="text" data-bind="form.name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-200" placeholder="Your name" required />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-primary mb-2">Email *</label>
+                                <input type="email" data-bind="form.email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-200" placeholder="your.email@domain.com" required />
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-primary mb-2">Subject *</label>
+                            <select data-bind="form.subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-200" required>
+                                <option value="">Select collaboration type</option>
+                                <option value="consulting">Statistical Consulting</option>
+                                <option value="research">Research Collaboration</option>
+                                <option value="speaking">Speaking Opportunity</option>
+                                <option value="training">Training Workshop</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-primary mb-2">Message *</label>
+                            <textarea data-bind="form.message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-200" placeholder="Tell me about your project or collaboration idea..." required></textarea>
+                        </div>
+                        <button type="submit" data-event="click:handleSubmit" class="w-full bg-secondary hover:bg-blue-600 text-white py-4 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ContactSection -->
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold font-montserrat mb-4">Dr. Sarah Chen</h3>
+                    <p class="text-gray-300 mb-4">Statistical Researcher & Data Science Consultant</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors duration-200">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors duration-200">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors duration-200">
+                            <i class="fab fa-google-scholar text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors duration-200">
+                            <i class="fab fa-researchgate text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#home" class="hover:text-white transition-colors duration-200">Home</a></li>
+                        <li><a href="#expertise" class="hover:text-white transition-colors duration-200">Expertise</a></li>
+                        <li><a href="#projects" class="hover:text-white transition-colors duration-200">Research</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors duration-200">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Latest Publication</h4>
+                    <p class="text-gray-300 text-sm mb-2">"Advanced Bayesian Methods for Healthcare Analytics"</p>
+                    <p class="text-gray-400 text-sm">Journal of Statistical Medicine, 2023</p>
+                    <button class="mt-3 text-secondary hover:text-white font-semibold transition-colors duration-200">
+                        Download PDF <i class="fas fa-download ml-1"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="border-t border-gray-600 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2023 Dr. Sarah Chen. All rights reserved. | Statistical Research Portfolio</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Fade in animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '50px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Initialize charts
+            // TODO: Implement real data binding and API integration for chart data
+
+            // Patient Outcome Trends Chart
+            const outcomeCtx = document.getElementById('outcomeChart');
+            if (outcomeCtx) {
+                new Chart(outcomeCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        datasets: [{
+                            label: 'Recovery Rate %',
+                            data: [78, 82, 85, 88, 91, 89, 94, 96, 93, 97, 95, 98],
+                            borderColor: '#3498DB',
+                            backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        }, {
+                            label: 'Confidence Interval',
+                            data: [73, 77, 80, 83, 86, 84, 89, 91, 88, 92, 90, 93],
+                            borderColor: '#E74C3C',
+                            backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                            tension: 0.4,
+                            fill: false,
+                            borderDash: [5, 5]
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                min: 70,
+                                max: 100
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Risk Distribution Chart
+            const riskCtx = document.getElementById('riskChart');
+            if (riskCtx) {
+                new Chart(riskCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Very Low', 'Low', 'Medium', 'High', 'Very High'],
+                        datasets: [{
+                            label: 'Risk Distribution',
+                            data: [15, 35, 30, 15, 5],
+                            backgroundColor: [
+                                '#27AE60',
+                                '#2ECC71',
+                                '#F39C12',
+                                '#E67E22',
+                                '#E74C3C'
+                            ],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Probability (%)'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Correlation Matrix Chart
+            const correlationCtx = document.getElementById('correlationChart');
+            if (correlationCtx) {
+                new Chart(correlationCtx, {
+                    type: 'scatter',
+                    data: {
+                        datasets: [{
+                            label: 'Temperature vs Humidity',
+                            data: [
+                                {x: 15, y: 85}, {x: 20, y: 78}, {x: 25, y: 65}, {x: 30, y: 52},
+                                {x: 35, y: 38}, {x: 18, y: 82}, {x: 22, y: 75}, {x: 28, y: 58},
+                                {x: 32, y: 45}, {x: 16, y: 88}, {x: 24, y: 68}, {x: 29, y: 55}
+                            ],
+                            backgroundColor: '#3498DB',
+                            borderColor: '#2C3E50',
+                            pointRadius: 6
+                        }, {
+                            label: 'Temperature vs Precipitation',
+                            data: [
+                                {x: 15, y: 25}, {x: 20, y: 18}, {x: 25, y: 12}, {x: 30, y: 8},
+                                {x: 35, y: 3}, {x: 18, y: 22}, {x: 22, y: 15}, {x: 28, y: 10},
+                                {x: 32, y: 5}, {x: 16, y: 28}, {x: 24, y: 14}, {x: 29, y: 9}
+                            ],
+                            backgroundColor: '#E74C3C',
+                            borderColor: '#C0392B',
+                            pointRadius: 6
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'top'
+                            }
+                        },
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Temperature (°C)'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Humidity/Precipitation (%/mm)'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Form submission handler
+            const contactForm = document.querySelector('form[data-implementation]');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // TODO: Implement form validation and submission to backend API
+                    alert('Thank you for your message! This is a demo form.');
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
